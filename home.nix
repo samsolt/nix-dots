@@ -123,6 +123,7 @@
       shellInit = "
         function rebuild;
         cp -r ~/gitsysconfig/ ~/sysconfig/
+        rm -rf ~/sysconfig/.git/
         sudo nixos-rebuild switch --flake /home/samik/sysconfig
         rm -rf ~/sysconfig/; end
         
