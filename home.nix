@@ -127,6 +127,8 @@
         rm -rf ~/sysconfig/; end
         
         function window; scream -i virbr0 & looking-glass-client; end
+
+        function drzpicu; asusctl profile -P quiet && brightnessctl set 0 && brightnessctl set -d asus::kbd_backlight 0 && exit; end
       ";
     };
 #    mpv.enable = true;
