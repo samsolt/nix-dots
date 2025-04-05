@@ -121,7 +121,11 @@
       enable = true;
       loginShellInit = "Hyprland";
       shellInit = "
-        function rebuild; sudo nixos-rebuild switch --flake /home/samik/sysconfig; end
+        function rebuild;
+        cp -r ~/gitsysconfig/ ~/sysconfig/
+        sudo nixos-rebuild switch --flake /home/samik/sysconfig
+        rm -rf ~/sysconfig/; end
+        
         function window; scream -i virbr0 & looking-glass-client; end
       ";
     };
