@@ -123,8 +123,8 @@
       shellInit = "
         function rebuild;
         cp -r ~/gitsysconfig/ ~/sysconfig/
-        rm -rf ~/sysconfig/.git/
-        sudo nixos-rebuild switch --flake /home/samik/sysconfig
+        rm -rf ~/sysconfig/.git*
+        sudo nixos-rebuild switch --flake ~/sysconfig
         rm -rf ~/sysconfig/; end
         
         function window; scream -i virbr0 & looking-glass-client; end
