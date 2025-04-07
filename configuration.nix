@@ -10,6 +10,7 @@
     appimage-run
     brightnessctl
     btop
+    busybox
     fastfetch
     ffmpeg_6-full
     gcc

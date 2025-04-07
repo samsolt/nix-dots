@@ -11,7 +11,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, hyprland, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, stylix, hyprland, ... }@inputs: {
     nixosConfigurations.snow = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
