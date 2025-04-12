@@ -110,7 +110,6 @@
     };
   };
   programs = {
-    git = import ./git.nix;
     obs-studio = {
       enable = true;
       plugins = [ pkgs.obs-studio-plugins.obs-vaapi ];
@@ -132,7 +131,7 @@
         function drzpicu; asusctl profile -P quiet && brightnessctl set 0 && brightnessctl set -d asus::kbd_backlight 0 && exit; end
       ";
     };
-#    mpv.enable = true;
+    mpv.enable = true;
     looking-glass-client = {
       enable = true;
       settings = import ./app-config/looking-glass.ini;
@@ -144,7 +143,10 @@
           pkgs.vscode-extensions.jnoortheen.nix-ide
           pkgs.vscode-extensions.ms-vscode.cpptools
         ];
-        userSettings = { "editor.largeFileOptimizations" = "false"; };
+        userSettings = {
+          "editor.largeFileOptimizations" = "false";
+          "C_Cpp.default.compilerPath" = "/run/current-system/sw/bin/gcc";
+        };
       };
     };
     firefox.enable = true;

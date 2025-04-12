@@ -14,6 +14,7 @@
     fastfetch
     ffmpeg_6-full
     gcc
+    git
     grub2
     hyprpolkitagent
     unixtools.xxd
@@ -28,7 +29,6 @@
     scream
     virglrenderer
     virt-viewer
-    vlc
     vulkan-tools
     waydroid-helper
     wev
@@ -140,7 +140,7 @@
 
   swapDevices = [{
     device = "/var/lib/swapfile";
-    size = 16*1024;
+    size = 32*1024;
   }];
   
   hardware.opentabletdriver.enable = true;
