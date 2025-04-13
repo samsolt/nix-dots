@@ -40,6 +40,7 @@
     jellyfin-media-player
     kdePackages.kdenlive
     kdePackages.ark
+    krita
     libreoffice-qt6
     loupe
     nicotine-plus
@@ -142,10 +143,11 @@
         extensions = [ 
           pkgs.vscode-extensions.jnoortheen.nix-ide
           pkgs.vscode-extensions.ms-vscode.cpptools
+          pkgs.vscode-extensions.ms-vscode.cpptools-extension-pack
         ];
         userSettings = {
           "editor.largeFileOptimizations" = "false";
-          "C_Cpp.default.compilerPath" = "/run/current-system/sw/bin/gcc";
+          "C_Cpp.default.compilerPath" = "/run/current-system/sw/bin/g++";
         };
       };
     };

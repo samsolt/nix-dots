@@ -14,6 +14,7 @@
     fastfetch
     ffmpeg_6-full
     gcc
+    gdb
     git
     grub2
     hyprpolkitagent
@@ -36,6 +37,15 @@
     wineWowPackages.full
     wl-clipboard
   ];
+
+  programs.nvf = {
+    enable = true;
+    settings.vim = {
+      statusline.lualine = {
+        enable = true;
+      };
+    };
+  };
 
   programs.virt-manager.enable = true;
   virtualisation = {
