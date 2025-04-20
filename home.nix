@@ -56,6 +56,7 @@
     tetrio-desktop
     umu-launcher
     vesktop
+    wootility
     hyprpicker
   ];
 

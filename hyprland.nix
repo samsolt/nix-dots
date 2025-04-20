@@ -47,7 +47,6 @@ render = {
 windowrulev2 = [
     "float, class:mpv"
     "float, class:org.gnome.FileRoller"
-    "float, class:kitty"
 
     "suppressevent maximize, class:.*"
     "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"

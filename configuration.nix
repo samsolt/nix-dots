@@ -1,31 +1,37 @@
-{ config, lib, pkgs, inputs, ... }:
-
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   environment.systemPackages = with pkgs; [
     appimage-run
     brightnessctl
     btop
     busybox
+    cmake
     fastfetch
     ffmpeg_6-full
     gcc
     gdb
     git
+    gnumake
     grub2
     hyprpolkitagent
     unixtools.xxd
+    helix
     hyprshot
     mesa
     mesa-demos
     ncdu
     nvtopPackages.full
     pciutils
-    rar 
+    rar
     qemu-utils
     scream
     virglrenderer
@@ -41,8 +47,65 @@
   programs.nvf = {
     enable = true;
     settings.vim = {
-      statusline.lualine = {
+      options = {
+        shiftwidth = 2;
+        tabstop = 8;
+      };
+      useSystemClipboard = true;
+      languages = {
+        clang = {
+          enable = true;
+          lsp.enable = true;
+          treesitter.enable = true;
+          dap.enable = true;
+        };
+        nix = {
+          enable = true;
+          format.enable = true;
+          lsp.enable = true;
+          treesitter.enable = true;
+        };
+      };
+      filetree.nvimTree.enable = true;
+      telescope.enable = true;
+      ui = {
+        borders.enable = true;
+        breadcrumbs.enable = true;
+        colorizer.enable = true;
+        fastaction.enable = true;
+        illuminate.enable = true;
+        modes-nvim.enable = true;
+        noice.enable = true;
+        smartcolumn.enable = true;
+      };
+      terminal.toggleterm.enable = true;
+      statusline.lualine.enable = true;
+      tabline.nvimBufferline.enable = true;
+      formatter.conform-nvim.enable = true;
+      diagnostics = {
         enable = true;
+        nvim-lint.enable = true;
+      };
+      git.enable = true;
+      autopairs.nvim-autopairs.enable = true;
+      notify.nvim-notify.enable = true;
+      binds = {
+        cheatsheet.enable = true;
+        whichKey.enable = true;
+      };
+      theme = {
+        enable = true;
+        name = "catppuccin";
+        style = "mocha";
+      };
+      debugger.nvim-dap = {
+        enable = true;
+        ui.enable = true;
+      };
+
+      utility = {
+        multicursors.enable = true;
+        #        images.image-nvim.enable = true;
       };
     };
   };
@@ -65,12 +128,14 @@
   };
 
   programs.fish.enable = true;
+
   programs.steam.enable = true;
 
   stylix = {
     enable = true;
     image = ./wallpaper.png;
     polarity = "dark";
+    targets.nvf.enable = false;
   };
 
   services.pipewire = {
@@ -130,29 +195,32 @@
   services.flatpak.enable = true;
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    config.common.default = "*";
   };
-  
+
   services.playerctld.enable = true;
   services.printing = {
     enable = true;
-    drivers = [ pkgs.brlaser pkgs.brgenml1lpr pkgs.brgenml1cupswrapper ];
+    drivers = [pkgs.brlaser pkgs.brgenml1lpr pkgs.brgenml1cupswrapper];
   };
   services.avahi = {
-  enable = true;
-  nssmdns4 = true;
-  openFirewall = true;
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
   };
   services.udev = {
     enable = true;
-    packages = [ pkgs.wooting-udev-rules ];
+    packages = [pkgs.wooting-udev-rules];
   };
 
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 32*1024;
-  }];
-  
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 32 * 1024;
+    }
+  ];
+
   hardware.opentabletdriver.enable = true;
   hardware.bluetooth = {
     enable = true;
@@ -160,7 +228,7 @@
   };
   hardware.graphics = {
     enable = true;
-    extraPackages = [ pkgs.intel-media-driver ];
+    extraPackages = [pkgs.intel-media-driver];
   };
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
@@ -179,15 +247,15 @@
   };
 
   networking = {
-    firewall.allowedUDPPorts = [ 4010 ];
+    firewall.allowedUDPPorts = [4010];
     networkmanager = {
       enable = true;
-#      wifi.powersave = false;
+      #      wifi.powersave = false;
     };
   };
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
     substituters = ["https://hyprland.cachix.org"];
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
@@ -196,11 +264,11 @@
     users.samik = {
       isNormalUser = true;
       description = "samik";
-      extraGroups = [ "networkmanager" "wheel" "kvm" "libvirtd" "mediaserver" ];
+      extraGroups = ["networkmanager" "wheel" "kvm" "libvirtd" "mediaserver"];
       homeMode = "701";
       shell = pkgs.fish;
     };
-    groups.mediaserver.members = [ "jellyfin" "sonarr" ];
+    groups.mediaserver.members = ["jellyfin" "sonarr"];
   };
 
   fonts = {
@@ -211,9 +279,9 @@
       font-awesome
     ];
   };
-  
+
   # qemu uefi firmware support z wiki.nixos.org
-  systemd.tmpfiles.rules = [ "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware" ];
+  systemd.tmpfiles.rules = ["L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware"];
 
   boot = {
     loader = {
@@ -231,8 +299,8 @@
       options snd-hda-intel model=asus-zenbook
     '';
     modprobeConfig.useUbuntuModuleBlacklist = false;
-    kernelParams = [ "intel_iommu=on" "iommu=pt" "vfio-pci.ids=10de:2191" ];
-    supportedFilesystems = [ "ntfs" ];
+    kernelParams = ["intel_iommu=on" "iommu=pt" "vfio-pci.ids=10de:2191"];
+    supportedFilesystems = ["ntfs"];
   };
 
   networking.hostName = "snow"; # Define your hostname.
@@ -259,31 +327,32 @@
     LC_TIME = "cs_CZ.UTF-8";
   };
 
-#  i18n.inputMethod = {
-#    enable = true;
-#    type = "fcitx5";
-#    fcitx5 = {
-#      waylandFrontend = true;
-#      addons = [
-#        pkgs.fcitx5-mozc
-#        pkgs.fcitx5-gtk
-#      ];
-#    };
-#  };
+  #  i18n.inputMethod = {
+  #    enable = true;
+  #    type = "fcitx5";
+  #    fcitx5 = {
+  #      waylandFrontend = true;
+  #      addons = [
+  #        pkgs.fcitx5-mozc
+  #        pkgs.fcitx5-gtk
+  #      ];
+  #    };
+  #  };
 
   security = {
     polkit.enable = true;
     pam.sshAgentAuth = {
       enable = true;
-      authorizedKeysFiles = [ "/home/samik/.ssh/id_rsa.pub" ];
+      authorizedKeysFiles = ["/home/samik/.ssh/id_rsa.pub"];
     };
+    protectKernelImage = false;
   };
 
   nixpkgs.config = {
     allowUnfree = true;
-    
+
     #tohle je pro sonarr
-    permittedInsecurePackages = [ 
+    permittedInsecurePackages = [
       "dotnet-sdk-6.0.428"
       "aspnetcore-runtime-6.0.36"
     ];
