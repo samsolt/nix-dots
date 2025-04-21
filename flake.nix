@@ -39,16 +39,25 @@
         stylix.nixosModules.stylix
       ];
     };
-    homeConfigurations."samik" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-
-      modules = [
-        ./home.nix
-        stylix.homeManagerModules.stylix
-      ];
-
-      # Optionally use extraSpecialArgs
-      # to pass through arguments to home.nix
+    homeConfigurations = {
+      "samik" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./home.nix
+          stylix.homeManagerModules.stylix
+        ];
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
+      };
+      "nix-on-droid" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./droidhome.nix
+          stylix.homeManagerModules.stylix
+        ];
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
+      };
     };
     nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
       pkgs = import nixpkgs {system = "aarch64-linux";};
