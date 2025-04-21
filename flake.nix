@@ -13,25 +13,47 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, stylix, hyprland, nvf, ... }@inputs: {
+  outputs = {
+    nixpkgs,
+    home-manager,
+    stylix,
+    hyprland,
+    nvf,
+    nix-on-droid,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
     nixosConfigurations.snow = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [ # no clue co delam :(
+      specialArgs = {inherit inputs;};
+      modules = [
         ./configuration.nix
         nvf.nixosModules.default
         stylix.nixosModules.stylix
-        home-manager.nixosModules.home-manager { 
-          home-manager = {
-            useUserPackages = true;
-            backupFileExtension = "backup";
-            extraSpecialArgs = { inherit inputs; };
-            users.samik = import ./home.nix;
-          };
-        }
       ];
     };
+    homeConfigurations."samik" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+
+      modules = [
+        ./home.nix
+        stylix.homeManagerModules.stylix
+      ];
+
+      # Optionally use extraSpecialArgs
+      # to pass through arguments to home.nix
+    };
+    nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
+      pkgs = import nixpkgs { system = "aarch64-linux"; };
+      modules = [ ./nix-on-droid.nix ];
+    };
+      }
   };
 }
