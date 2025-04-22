@@ -26,6 +26,11 @@
     #xz
     #zip
     #unzip
+    fastfetch
+
+    gcc
+    gnumake
+    cmake
   ];
 
   stylix = {
