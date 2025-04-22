@@ -35,7 +35,7 @@
     terminal.toggleterm.enable = true;
     statusline.lualine.enable = true;
     tabline.nvimBufferline.enable = true;
-    formatter.conform-nvim.enable = true;
+       formatter.conform-nvim.enable = true;
     diagnostics = {
       enable = true;
       nvim-lint.enable = true;
