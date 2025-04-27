@@ -7,17 +7,24 @@
     };
     useSystemClipboard = true;
     languages = {
-      clang = {
+      enableDAP = true;
+      enableExtraDiagnostics = true;
+      enableFormat = true;
+      enableLSP = true;
+      enableTreesitter = true;
+
+      clang.enable = true;
+      nix.enable = true;
+      markdown = {
         enable = true;
-        lsp.enable = true;
-        treesitter.enable = true;
-        dap.enable = true;
+        extensions.render-markdown-nvim.enable = true;
       };
-      nix = {
+    };
+    autocomplete = {
+      enableSharedCmpSources = true;
+      blink-cmp = {
         enable = true;
-        format.enable = true;
-        lsp.enable = true;
-        treesitter.enable = true;
+        friendly-snippets.enable = true;
       };
     };
     filetree.nvimTree.enable = true;
@@ -35,7 +42,7 @@
     terminal.toggleterm.enable = true;
     statusline.lualine.enable = true;
     tabline.nvimBufferline.enable = true;
-       formatter.conform-nvim.enable = true;
+    formatter.conform-nvim.enable = true;
     diagnostics = {
       enable = true;
       nvim-lint.enable = true;
