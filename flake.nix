@@ -46,8 +46,6 @@
         ./home.nix
         stylix.homeManagerModules.stylix
       ];
-      # Optionally use extraSpecialArgs
-      # to pass through arguments to home.nix
     };
     nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
       pkgs = import nixpkgs {system = "aarch64-linux";};

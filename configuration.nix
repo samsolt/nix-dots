@@ -21,10 +21,8 @@
     gdb
     git
     gnumake
-    grub2
     hyprpolkitagent
     unixtools.xxd
-    helix
     hyprshot
     mesa
     mesa-demos
@@ -71,7 +69,6 @@
     enable = true;
     image = ./wallpaper.png;
     polarity = "dark";
-    targets.nvf.enable = false;
   };
 
   services.pipewire = {
@@ -101,8 +98,23 @@
   services.tailscale.enable = true;
   services.httpd = {
     enable = true;
-    virtualHosts."localhost:80" = {
-      documentRoot = "/srv/localhost:80";
+    virtualHosts = {
+      "kocka.moe" = {
+        documentRoot = "/srv/kocka.moe";
+        listen = [
+          {
+            port = 80;
+          }
+        ];
+      };
+      "soru.moe" = {
+        documentRoot = "/srv/soru.moe";
+        listen = [
+          {
+            port = 81;
+          }
+        ];
+      };
     };
   };
   services.cloudflared = {
@@ -153,11 +165,12 @@
   swapDevices = [
     {
       device = "/var/lib/swapfile";
-      size = 32 * 1024;
+      size = 16 * 1024;
     }
   ];
 
   hardware.opentabletdriver.enable = true;
+  hardware.sane.enable = true;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -200,7 +213,7 @@
     users.samik = {
       isNormalUser = true;
       description = "samik";
-      extraGroups = ["networkmanager" "wheel" "kvm" "libvirtd" "mediaserver"];
+      extraGroups = ["networkmanager" "wheel" "kvm" "libvirtd" "mediaserver" "lp" "scanner"];
       homeMode = "701";
       shell = pkgs.fish;
     };

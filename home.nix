@@ -1,6 +1,9 @@
-{ inputs, config, pkgs, ... }: 
-
 {
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
   home.username = "samik";
   home.homeDirectory = "/home/samik";
   home.stateVersion = "24.11";
@@ -62,24 +65,24 @@
 
   stylix = {
     enable = true;
-#    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-#      base00 = "1e1e2e";
-#      base01 = "181825";
-#      base02 = "313244";
-#      base03 = "45475a";
-#      base04 = "585b70";
-#      base05 = "cdd6f4";
-#      base06 = "f5e0dc";
-#      base07 = "b4befe";
-#      base08 = "f38ba8";
-#      base09 = "fab387";
-#      base0A = "f9e2af";
-#      base0B = "a6e3a1";
-#      base0C = "94e2d5";
-#      base0D = "89b4fa";
-#      base0E = "cba6f7";
-#      base0F = "f2cdcd";
-#    };
+    #    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    #      base00 = "1e1e2e";
+    #      base01 = "181825";
+    #      base02 = "313244";
+    #      base03 = "45475a";
+    #      base04 = "585b70";
+    #      base05 = "cdd6f4";
+    #      base06 = "f5e0dc";
+    #      base07 = "b4befe";
+    #      base08 = "f38ba8";
+    #      base09 = "fab387";
+    #      base0A = "f9e2af";
+    #      base0B = "a6e3a1";
+    #      base0C = "94e2d5";
+    #      base0D = "89b4fa";
+    #      base0E = "cba6f7";
+    #      base0F = "f2cdcd";
+    #    };
     image = ./wallpaper.png;
     polarity = "dark";
     cursor = {
@@ -91,30 +94,30 @@
     fonts = {
       sansSerif = {
         name = "Inter Nerd Font";
-        package = pkgs.inter-nerdfont;  
+        package = pkgs.inter-nerdfont;
       };
       monospace = {
         name = "Maple Mono NF";
         package = pkgs.maple-mono.NF;
       };
     };
-#    iconTheme = {
-#      enable = true;
-#      package = pkgs.kdePackages.breeze;
-#    };
+    #    iconTheme = {
+    #      enable = true;
+    #      package = pkgs.kdePackages.breeze;
+    #    };
     targets = {
-#      hyprland.enable = false;
-#      hyprpaper.enable = false;
+      #      hyprland.enable = false;
+      #      hyprpaper.enable = false;
       mangohud.enable = false;
-      vscode.profileNames = [ "default" ];
+      vscode.profileNames = ["default"];
       waybar.font = "sansSerif";
-      firefox.profileNames = [ "l3awtpxv" ]; # tohle se urcite eventualne rozjebe
+      firefox.profileNames = ["l3awtpxv"]; # tohle se urcite eventualne rozjebe
     };
   };
   programs = {
     obs-studio = {
       enable = true;
-      plugins = [ pkgs.obs-studio-plugins.obs-vaapi ];
+      plugins = [pkgs.obs-studio-plugins.obs-vaapi];
     };
     mangohud.enable = true;
     rofi.enable = true;
@@ -133,7 +136,10 @@
         function drzpicu; asusctl profile -P quiet && brightnessctl set 0 && brightnessctl set -d asus::kbd_backlight 0 && exit; end
       ";
     };
-    mpv.enable = true;
+    mpv = {
+      enable = true;
+      scripts = [pkgs.mpvScripts.mpris];
+    };
     looking-glass-client = {
       enable = true;
       settings = import ./app-config/looking-glass.ini;
@@ -141,7 +147,7 @@
     vscode = {
       enable = true;
       profiles.default = {
-        extensions = [ 
+        extensions = [
           pkgs.vscode-extensions.jnoortheen.nix-ide
           pkgs.vscode-extensions.ms-vscode.cpptools
           pkgs.vscode-extensions.ms-vscode.cpptools-extension-pack
@@ -172,16 +178,16 @@
       genericName = "osu! na dGPU";
       icon = "osu";
       exec = "nvidia-offload osu! %u";
-      mimeType = [ "application/x-osu-beatmap-archive" "application/x-osu-skin-archive" "application/x-osu-beatmap" "application/x-osu-storyboard" "application/x-osu-replay" "x-scheme-handler/osu" ];
-      categories = [ "Game" ];
+      mimeType = ["application/x-osu-beatmap-archive" "application/x-osu-skin-archive" "application/x-osu-beatmap" "application/x-osu-storyboard" "application/x-osu-replay" "x-scheme-handler/osu"];
+      categories = ["Game"];
     };
     blender = {
       name = "Blender";
       genericName = "Blender na dGPU";
       icon = "blender";
       exec = "nvidia-offload blender %f";
-      mimeType = [ "application/x-blender" ];
-      categories = [ "Graphics" "3DGraphics" ];
+      mimeType = ["application/x-blender"];
+      categories = ["Graphics" "3DGraphics"];
     };
   };
   nixpkgs.config.allowUnfree = true;

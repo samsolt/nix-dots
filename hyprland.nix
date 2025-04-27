@@ -1,77 +1,75 @@
 {
-monitor = ",1920x1080@144,0x0,1";
+  monitor = ",1920x1080@144,0x0,1";
 
-env = [
+  env = [
     "AQ_DRM_DEVICES,/dev/dri/card1"
-];
+  ];
 
-exec-once = [
+  exec-once = [
     "hyprlock"
-#    "obs --startreplaybuffer"
+    #    "obs --startreplaybuffer"
     "systemctl --user start hyprpolkitagent.service"
     "qbittorrent"
-];
+  ];
 
-
-general = {
+  general = {
     gaps_in = "4";
     gaps_out = "6";
     border_size = "0";
-#    "col.active_border" = "rgba(ffffffff)";
-#    "col.inactive_border" = "rgba(00000000)";
+    #    "col.active_border" = "rgba(ffffffff)";
+    #    "col.inactive_border" = "rgba(00000000)";
     allow_tearing = "false";
     layout = "dwindle";
-};
+  };
 
-decoration = {
+  decoration = {
     rounding = "5";
     active_opacity = "1.0";
     inactive_opacity = "0.9";
     fullscreen_opacity = "1.0";
     shadow = {
-        enabled = "true";
-        range = "16";
-        render_power = "3";
+      enabled = "true";
+      range = "16";
+      render_power = "3";
     };
     blur = {
-        enabled = "true";
-        size = "5";
-        passes = "3";
-        vibrancy = "0.0";
+      enabled = "true";
+      size = "5";
+      passes = "3";
+      vibrancy = "0.0";
     };
-};
-render = {
+  };
+  render = {
     direct_scanout = "0";
-};
+  };
 
-windowrulev2 = [
+  windowrulev2 = [
     "float, class:mpv"
     "float, class:org.gnome.FileRoller"
 
     "suppressevent maximize, class:.*"
     "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-];
+  ];
 
-
-animations = {
+  animations = {
     bezier = [
-        "easeInOutCirc, 0.85, 0, 0.15, 1"
+      "easeInOutCirc, 0.85, 0, 0.15, 1"
     ];
     animation = [
-        "global, 1, 3, easeInOutCirc"
+      "global, 1, 3, easeInOutCirc"
     ];
-};
+  };
 
-dwindle = {
+  dwindle = {
     preserve_split = "true"; # You probably want this
-};
+  };
 
-misc = {
+  misc = {
     force_default_wallpaper = "2";
     disable_hyprland_logo = "false";
-};
+  };
 
-input = {
+  input = {
     kb_layout = "us,cz";
     kb_variant = ",qwerty";
     kb_options = "grp:alt_shift_toggle";
@@ -82,19 +80,19 @@ input = {
     accel_profile = "flat";
 
     touchpad = {
-        natural_scroll = "true";
-        scroll_factor = "0.2";
+      natural_scroll = "true";
+      scroll_factor = "0.2";
     };
-};
+  };
 
-
-bind = [
+  bind = [
     "super, t, exec, kitty"
     "super, q, killactive,"
     "super, E, exec, dolphin"
     "super, V, togglefloating,"
     "super, J, togglesplit,"
     "super, g, exec, lutris"
+    ", XF86HomePage, exec, firefox"
     "alt, g, exec, obs-cmd replay save"
     "super, l, exec, hyprlock"
     "super, h, exec, hyprpicker -a"
@@ -134,39 +132,38 @@ bind = [
     "super SHIFT, S, movetoworkspace, special:magic"
     "alt, tab, cyclenext"
     "alt, grave, cyclenext"
-#    "alt, tab, alterzorder, top"
+    #    "alt, tab, alterzorder, top"
     "super, mouse_down, workspace, e+1"
     "super, mouse_up, workspace, e-1"
+  ];
+  bindr = "super, super_l, exec, rofi -show drun";
 
-];
-bindr = "super, super_l, exec, rofi -show drun";
-
-binde = [
+  binde = [
     "control super, left, resizeactive, -20 0"
     "control super, right, resizeactive, 20 0"
     "control super, up, resizeactive, 0 -20"
     "control super, down, resizeactive, 0 20"
-];
+  ];
 
-bindm = [
-"super, mouse:272, movewindow"
-"super, mouse:273, resizewindow"
-];
+  bindm = [
+    "super, mouse:272, movewindow"
+    "super, mouse:273, resizewindow"
+  ];
 
-bindel = [
-",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
-",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
-];
+  bindel = [
+    ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+    ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    ",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
+    ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
+  ];
 
-bindl = [
-", XF86AudioNext, exec, playerctl next"
-", XF86AudioPause, exec, playerctl play-pause"
-", XF86AudioPlay, exec, playerctl play-pause"
-", XF86AudioPrev, exec, playerctl previous"
-", XF86Tools, exec, cvlc /home/samik/Music"
-];
+  bindl = [
+    ", XF86AudioNext, exec, playerctl next"
+    ", XF86AudioPause, exec, playerctl play-pause"
+    ", XF86AudioPlay, exec, playerctl play-pause"
+    ", XF86AudioPrev, exec, playerctl previous"
+    ", XF86Tools, exec, mpv --shuffle --no-audio-display /home/samik/Music"
+  ];
 }
