@@ -40,6 +40,13 @@
     winetricks
     wineWowPackages.full
     wl-clipboard
+
+    alsa-utils
+    pulseaudioFull
+    pavucontrol
+    alsa-firmware
+    sof-firmware
+    alsa-ucm-conf
   ];
 
   programs.nvf = import ./nvf.nix;
@@ -244,9 +251,9 @@
         efiSysMountPoint = "/boot";
       };
     };
-    extraModprobeConfig = ''
-      options snd-hda-intel model=asus-zenbook
-    '';
+    #   extraModprobeConfig = ''
+    #     options snd-hda-intel model=asus-zenbook
+    #   '';
     modprobeConfig.useUbuntuModuleBlacklist = false;
     kernelParams = ["intel_iommu=on" "iommu=pt" "vfio-pci.ids=10de:2191"];
     supportedFilesystems = ["ntfs"];
