@@ -3,6 +3,7 @@
 
   env = [
     "AQ_DRM_DEVICES,/dev/dri/card1"
+    "NIXOS_OZONE_WL,1"
   ];
 
   exec-once = [
@@ -51,15 +52,33 @@
     "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
   ];
 
+  # animations = {
+  #   bezier = [
+  #     "easeInOutCirc, 0.85, 0, 0.15, 1"
+  #   ];
+  #   animation = [
+  #     "global, 1, 3, easeInOutCirc"
+  #     "specialWorkspace, 1, 3, easeInOutCirc, slidevert"
+  #   ];
+  # };
   animations = {
     bezier = [
-      "easeInOutCirc, 0.85, 0, 0.15, 1"
+      "wind, 0.05, 0.9, 0.1, 1"
+      "winIn, 0.1, 1.1, 0.1, 1"
+      "winOut, 0.3, -0.3, 0, 1"
+      "liner, 1, 1, 1, 1"
     ];
     animation = [
-      "global, 1, 3, easeInOutCirc"
+      "windows, 1, 6, wind, slide"
+      "windowsIn, 1, 6, winIn, slide"
+      "windowsOut, 1, 5, winOut, slide"
+      "windowsMove, 1, 5, wind, slide"
+      "border, 1, 1, liner"
+      "fade, 1, 2, default"
+      "workspaces, 1, 5, wind"
+      "specialWorkspace, 1, 5, wind, slidevert"
     ];
   };
-
   dwindle = {
     preserve_split = "true"; # You probably want this
   };

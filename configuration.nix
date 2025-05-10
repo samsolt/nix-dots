@@ -38,7 +38,7 @@
     waydroid-helper
     wev
     winetricks
-    wineWowPackages.full
+    wineWowPackages.waylandFull
     wl-clipboard
 
     alsa-utils
@@ -86,6 +86,7 @@
     pulse.enable = true;
     wireplumber.enable = true;
   };
+  services.logind.lidSwitch = "ignore";
   services.jellyfin = {
     enable = true;
     group = "mediaserver";
@@ -142,7 +143,7 @@
       "vfio_enable" = true;
       "vfio_save" = false;
       "always_reboot" = false;
-      "no_logind" = true;
+      "no_logind" = false;
       "logout_timeout_s" = 5;
       "hotplug_type" = "None";
     };
