@@ -36,7 +36,6 @@
     davinci-resolve
     discord
     gimp
-    kdePackages.dolphin
     filezilla
     gimp
     inkscape
@@ -46,6 +45,7 @@
     krita
     libreoffice-qt6
     loupe
+    nautilus
     nicotine-plus
     obs-cmd
     obsidian
@@ -136,6 +136,11 @@
         function drzpicu; asusctl profile -P quiet && brightnessctl set 0 && brightnessctl set -d asus::kbd_backlight 0 && exit; end
       ";
     };
+    starship = {
+      enable = true;
+      enableFishIntegration = true;
+      enableTransience = true;
+    };
     mpv = {
       enable = true;
       scripts = [pkgs.mpvScripts.mpris];
@@ -189,6 +194,13 @@
       exec = "nvidia-offload blender %f";
       mimeType = ["application/x-blender"];
       categories = ["Graphics" "3DGraphics"];
+    };
+    tetrio= {
+      name = "TETR.IO";
+      genericName = "TETR.IO na dGPU";
+      icon = "TETR.IO";
+      exec = "nvidia-offload tetrio %U";
+      mimeType = ["x-scheme-handler/tetrio"];
     };
   };
   nixpkgs.config.allowUnfree = true;

@@ -85,7 +85,6 @@
 
   misc = {
     force_default_wallpaper = "2";
-    disable_hyprland_logo = "false";
   };
 
   input = {
@@ -107,7 +106,7 @@
   bind = [
     "super, t, exec, kitty"
     "super, q, killactive,"
-    "super, E, exec, dolphin"
+    "super, E, exec, nautilus"
     "super, V, togglefloating,"
     "super, J, togglesplit,"
     "super, g, exec, lutris"

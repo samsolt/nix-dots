@@ -38,7 +38,7 @@
     waydroid-helper
     wev
     winetricks
-    wineWowPackages.waylandFull
+    wineWowPackages.full
     wl-clipboard
 
     alsa-utils

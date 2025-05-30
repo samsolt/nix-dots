@@ -6,11 +6,11 @@
       tabstop = 8;
     };
     useSystemClipboard = true;
+    lsp.enable = true;
     languages = {
       enableDAP = true;
       enableExtraDiagnostics = true;
       enableFormat = true;
-      enableLSP = true;
       enableTreesitter = true;
 
       clang.enable = true;
@@ -27,7 +27,6 @@
         friendly-snippets.enable = true;
       };
     };
-    filetree.nvimTree.enable = true;
     telescope.enable = true;
     ui = {
       borders.enable = true;
