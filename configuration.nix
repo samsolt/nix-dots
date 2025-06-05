@@ -51,22 +51,7 @@
 
   programs.nvf = import ./nvf.nix;
 
-  programs.virt-manager.enable = true;
-  virtualisation = {
-    libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_full;
-        swtpm.enable = true;
-        ovmf = {
-          enable = true;
-          packages = [pkgs.OVMFFull.fd];
-        };
-      };
-    };
-    kvmgt.enable = true;
-    waydroid.enable = true;
-  };
+  virtualisation.waydroid.enable = true;
 
   programs.fish.enable = true;
 
@@ -135,18 +120,6 @@
   services.asusd = {
     enable = true;
     enableUserService = true;
-  };
-  services.supergfxd = {
-    enable = true;
-    settings = {
-      "mode" = "Hybrid";
-      "vfio_enable" = true;
-      "vfio_save" = false;
-      "always_reboot" = false;
-      "no_logind" = false;
-      "logout_timeout_s" = 5;
-      "hotplug_type" = "None";
-    };
   };
   services.flatpak.enable = true;
   xdg.portal = {

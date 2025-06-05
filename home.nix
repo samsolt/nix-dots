@@ -36,12 +36,12 @@
     davinci-resolve
     discord
     gimp
+    file-roller
     filezilla
     gimp
     inkscape
     jellyfin-media-player
     kdePackages.kdenlive
-    kdePackages.ark
     krita
     libreoffice-qt6
     loupe
@@ -131,15 +131,8 @@
         sudo nixos-rebuild switch --flake ~/sysconfig
         rm -rf ~/sysconfig/; end
         
-        function window; scream -i virbr0 & looking-glass-client; end
-
         function drzpicu; asusctl profile -P quiet && brightnessctl set 0 && brightnessctl set -d asus::kbd_backlight 0 && exit; end
       ";
-    };
-    starship = {
-      enable = true;
-      enableFishIntegration = true;
-      enableTransience = true;
     };
     mpv = {
       enable = true;

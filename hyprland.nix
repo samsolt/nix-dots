@@ -1,5 +1,5 @@
 {
-  monitor = ",1920x1080@144,0x0,1";
+  monitor = ",1920x1080@144,0x0,1.333333";
 
   env = [
     "AQ_DRM_DEVICES,/dev/dri/card1"
@@ -85,6 +85,7 @@
 
   misc = {
     force_default_wallpaper = "2";
+    middle_click_paste = "false";
   };
 
   input = {
