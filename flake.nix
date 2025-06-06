@@ -2,7 +2,7 @@
   description = "samikuv nixos sysconfig flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs";
     stylix.url = "github:danth/stylix";
     hyprland.url = "github:hyprwm/Hyprland";
     home-manager = {
