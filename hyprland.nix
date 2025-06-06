@@ -1,5 +1,5 @@
 {
-  monitor = ",1920x1080@144,0x0,1.333333";
+  monitor = ",1920x1080@144,0x0,1";
 
   env = [
     "AQ_DRM_DEVICES,/dev/dri/card1"
@@ -16,7 +16,7 @@
   general = {
     gaps_in = "4";
     gaps_out = "6";
-    border_size = "0";
+    border_size = "2";
     #    "col.active_border" = "rgba(ffffffff)";
     #    "col.inactive_border" = "rgba(00000000)";
     allow_tearing = "false";
@@ -24,7 +24,7 @@
   };
 
   decoration = {
-    rounding = "5";
+    rounding = "15";
     active_opacity = "1.0";
     inactive_opacity = "0.9";
     fullscreen_opacity = "1.0";
@@ -34,7 +34,7 @@
       render_power = "3";
     };
     blur = {
-      enabled = "true";
+      enabled = "false";
       size = "5";
       passes = "3";
       vibrancy = "0.0";
