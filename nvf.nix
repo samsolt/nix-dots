@@ -5,7 +5,10 @@
       shiftwidth = 2;
       tabstop = 8;
     };
-    useSystemClipboard = true;
+    clipboard = {
+      enable = true;
+      providers.wl-copy.enable = true;
+    };
     lsp.enable = true;
     languages = {
       enableDAP = true;

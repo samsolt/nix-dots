@@ -34,10 +34,10 @@
       render_power = "3";
     };
     blur = {
-      enabled = "false";
-      size = "5";
-      passes = "3";
-      vibrancy = "0.0";
+      enabled = "true";
+      size = "3";
+      passes = "1";
+      vibrancy = "1.0";
     };
   };
   render = {

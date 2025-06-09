@@ -44,7 +44,7 @@
       inherit pkgs;
       modules = [
         ./home.nix
-        stylix.homeManagerModules.stylix
+        stylix.homeModules.stylix
       ];
     };
     nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
