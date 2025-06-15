@@ -29,13 +29,13 @@
     inactive_opacity = "0.9";
     fullscreen_opacity = "1.0";
     shadow = {
-      enabled = "true";
+      enabled = "false";
       range = "16";
       render_power = "3";
     };
     blur = {
       enabled = "true";
-      size = "3";
+      size = "1";
       passes = "1";
       vibrancy = "1.0";
     };

@@ -8,6 +8,7 @@
     clipboard = {
       enable = true;
       providers.wl-copy.enable = true;
+      registers = "unnamedplus";
     };
     lsp.enable = true;
     languages = {
@@ -56,11 +57,6 @@
       cheatsheet.enable = true;
       whichKey.enable = true;
     };
-    #     theme = {
-    #       enable = false;
-    #       name = "catppuccin";
-    #       style = "mocha";
-    #     };
     debugger.nvim-dap = {
       enable = true;
       ui.enable = true;

@@ -28,6 +28,7 @@
     mesa-demos
     ncdu
     nvtopPackages.full
+    p7zip
     pciutils
     rar
     qemu-utils
@@ -39,6 +40,7 @@
     wev
     winetricks
     wineWowPackages.full
+    wl-clicker
     wl-clipboard
 
     alsa-utils
@@ -194,7 +196,7 @@
     users.samik = {
       isNormalUser = true;
       description = "samik";
-      extraGroups = ["networkmanager" "wheel" "kvm" "libvirtd" "mediaserver" "lp" "scanner"];
+      extraGroups = ["networkmanager" "wheel" "kvm" "libvirtd" "mediaserver" "lp" "scanner" "input"];
       homeMode = "701";
       shell = pkgs.fish;
     };
