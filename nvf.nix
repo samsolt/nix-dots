@@ -19,10 +19,6 @@
 
       clang.enable = true;
       nix.enable = true;
-      markdown = {
-        enable = true;
-        extensions.render-markdown-nvim.enable = true;
-      };
     };
     autocomplete = {
       enableSharedCmpSources = true;
@@ -64,7 +60,6 @@
 
     utility = {
       multicursors.enable = true;
-      #        images.image-nvim.enable = true;
     };
   };
 }

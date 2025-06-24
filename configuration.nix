@@ -15,6 +15,7 @@
     btop
     busybox
     cmake
+    fakeroot # pro waydroid-helper
     fastfetch
     ffmpeg_6-full
     gcc
@@ -39,7 +40,7 @@
     waydroid-helper
     wev
     winetricks
-    wineWowPackages.full
+    wineWowPackages.unstableFull
     wl-clicker
     wl-clipboard
 
@@ -63,6 +64,21 @@
     enable = true;
     image = ./wallpaper.png;
     polarity = "dark";
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 24;
+    };
+    fonts = {
+      sansSerif = {
+        name = "Inter Nerd Font";
+        package = pkgs.inter-nerdfont;
+      };
+      monospace = {
+        name = "Maple Mono NF";
+        package = pkgs.maple-mono.NF;
+      };
+    };
   };
 
   services.pipewire = {
@@ -148,7 +164,7 @@
   swapDevices = [
     {
       device = "/var/lib/swapfile";
-      size = 16 * 1024;
+      size = 16 * 1000;
     }
   ];
 

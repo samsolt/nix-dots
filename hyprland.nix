@@ -89,8 +89,8 @@
   };
 
   input = {
-    kb_layout = "us,cz";
-    kb_variant = ",qwerty";
+    kb_layout = "us,cz,ru";
+    kb_variant = ",qwerty,phonetic";
     kb_options = "grp:alt_shift_toggle";
 
     follow_mouse = "1";

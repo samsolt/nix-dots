@@ -73,7 +73,13 @@
       name = "Bibata-Modern-Classic";
       size = 24;
     };
-    opacity.terminal = 0.6;
+    #opacity.terminal = 0.6;
+   iconTheme = {
+     enable = true;
+     package = pkgs.adwaita-icon-theme;
+      dark = "Adwaita";
+      light = "Adwaita";
+   };
     fonts = {
       sansSerif = {
         name = "Inter Nerd Font";
@@ -84,20 +90,17 @@
         package = pkgs.maple-mono.NF;
       };
     };
-    #    iconTheme = {
-    #      enable = true;
-    #      package = pkgs.kdePackages.breeze;
-    #    };
     targets = {
       #      hyprland.enable = false;
       #      hyprpaper.enable = false;
       mangohud.enable = false;
       vscode.profileNames = ["default"];
-      waybar.font = "sansSerif";
+      waybar.font = "monospace";
       firefox.profileNames = ["l3awtpxv"]; # tohle se urcite eventualne rozjebe
     };
   };
   programs = {
+    lutris.enable = true;
     obs-studio = {
       enable = true;
       plugins = [pkgs.obs-studio-plugins.obs-vaapi];
