@@ -56,6 +56,19 @@
 
   virtualisation.waydroid.enable = true;
 
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_full;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+        packages = [pkgs.OVMFFull.fd];
+      };
+    };
+  };
+  programs.virt-manager.enable = true;
+
   programs.fish.enable = true;
 
   programs.steam.enable = true;

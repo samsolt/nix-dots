@@ -33,17 +33,6 @@
     cmake
   ];
 
-  stylix = {
-    enable = true;
-    image = ./wallpaper.png;
-    polarity = "dark";
-    autoEnable = true;
-    fonts.monospace = {
-      name = "Maple Mono NF";
-      package = pkgs.maple-mono.NF;
-    };
-  };
-  # terminal.font = "${pkgs.terminus_font_ttf}/share/fonts/truetype/TerminusTTF.ttf";
   terminal.font = "${pkgs.maple-mono.NF}/share/fonts/truetype/MapleMono-NF-Regular.ttf";
 
   user.shell = "${pkgs.fish}/bin/fish";

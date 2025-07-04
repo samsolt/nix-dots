@@ -7,7 +7,7 @@
   ];
 
   exec-once = [
-    "hyprlock"
+    "asusctl profile -P quiet&&brightnessctl set 0&& hyprlock &&asusctl profile -P performance&&brightnessctl set 24000"
     #    "obs --startreplaybuffer"
     "systemctl --user start hyprpolkitagent.service"
     "qbittorrent"
@@ -113,7 +113,7 @@
     "super, g, exec, lutris"
     ", XF86HomePage, exec, firefox"
     "alt, g, exec, obs-cmd replay save"
-    "super, l, exec, hyprlock"
+    "super, l, exec, asusctl profile -P quiet&&brightnessctl set 0&& hyprlock &&asusctl profile -P performance&&brightnessctl set 24000"
     "super, h, exec, hyprpicker -a"
     ", print, exec, hyprshot -m region --clipboard-only --freeze"
     "super, c, fullscreen, 1"

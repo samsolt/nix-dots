@@ -73,7 +73,7 @@
       name = "Bibata-Modern-Classic";
       size = 24;
     };
-    #opacity.terminal = 0.6;
+    opacity.terminal = 0.6;
    iconTheme = {
      enable = true;
      package = pkgs.adwaita-icon-theme;
@@ -116,8 +116,6 @@
         rm -rf ~/sysconfig/.git*
         sudo nixos-rebuild switch --flake ~/sysconfig
         rm -rf ~/sysconfig/; end
-        
-        function drzpicu; asusctl profile -P quiet && brightnessctl set 0 && brightnessctl set -d asus::kbd_backlight 0 && exit; end
       ";
     };
     mpv = {

@@ -52,7 +52,6 @@
       extraSpecialArgs = {inherit inputs;};
       modules = [
         ./nix-on-droid.nix
-        inputs.stylix.nixOnDroidModules.stylix
       ];
     };
   };
