@@ -7,7 +7,7 @@
   ];
 
   exec-once = [
-    "asusctl profile -P quiet&&brightnessctl set 0&& hyprlock &&asusctl profile -P performance&&brightnessctl set 24000"
+        "asusctl profile -P quiet&&brightnessctl set 0&& hyprlock &&asusctl profile -P performance&&brightnessctl set 24000"
     #    "obs --startreplaybuffer"
     "systemctl --user start hyprpolkitagent.service"
     "qbittorrent"

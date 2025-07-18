@@ -25,6 +25,7 @@
     hyprpolkitagent
     unixtools.xxd
     hyprshot
+    libadwaita
     mesa
     mesa-demos
     ncdu
@@ -208,6 +209,7 @@
   };
 
   networking = {
+    firewall.enable = false;
     firewall.allowedUDPPorts = [4010];
     networkmanager = {
       enable = true;
