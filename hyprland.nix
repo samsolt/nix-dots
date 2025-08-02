@@ -1,13 +1,20 @@
 {
-  monitor = ",1920x1080@144,0x0,1";
+  monitor = ",2560x1440@144,0x0,1";
 
   env = [
-    "AQ_DRM_DEVICES,/dev/dri/card1"
+    "AQ_DRM_DEVICES,/dev/dri/card0"
     "NIXOS_OZONE_WL,1"
+    "ELECTRON_OZONE_PLATFORM_HINT,auto"
+    "LIBVA_DRIVER_NAMEnvidia"
+    "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+    "NVD_BACKEND,direct"
+    "__NV_PRIME_RENDER_OFFLOAD,1"
+    "__NV_PRIME_RENDER_OFFLOAD_PROVIDER,NVIDIA-G0"
+    "__VK_LAYER_NV_optimus,NVIDIA_only"
   ];
 
   exec-once = [
-        "asusctl profile -P quiet&&brightnessctl set 0&& hyprlock &&asusctl profile -P performance&&brightnessctl set 24000"
+    "asusctl profile -P quiet&&brightnessctl set 0&& hyprlock &&asusctl profile -P performance"
     #    "obs --startreplaybuffer"
     "systemctl --user start hyprpolkitagent.service"
     "qbittorrent"
@@ -16,7 +23,7 @@
   general = {
     gaps_in = "4";
     gaps_out = "6";
-    border_size = "2";
+    border_size = "3";
     #    "col.active_border" = "rgba(ffffffff)";
     #    "col.inactive_border" = "rgba(00000000)";
     allow_tearing = "false";
@@ -29,8 +36,8 @@
     inactive_opacity = "0.9";
     fullscreen_opacity = "1.0";
     shadow = {
-      enabled = "false";
-      range = "16";
+      enabled = "true";
+      range = "32";
       render_power = "3";
     };
     blur = {
@@ -111,9 +118,10 @@
     "super, V, togglefloating,"
     "super, J, togglesplit,"
     "super, g, exec, lutris"
+    "super alt, g, exec, steam"
     ", XF86HomePage, exec, firefox"
     "alt, g, exec, obs-cmd replay save"
-    "super, l, exec, asusctl profile -P quiet&&brightnessctl set 0&& hyprlock &&asusctl profile -P performance&&brightnessctl set 24000"
+    "super, l, exec, asusctl profile -P quiet && hyprlock &&asusctl profile -P performance"
     "super, h, exec, hyprpicker -a"
     ", print, exec, hyprshot -m region --clipboard-only --freeze"
     "super, c, fullscreen, 1"

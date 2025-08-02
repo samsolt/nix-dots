@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
   ];
 
+
   environment.systemPackages = with pkgs; [
     appimage-run
     brightnessctl
@@ -60,7 +61,7 @@
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
-      package = pkgs.qemu_full;
+      package = pkgs.qemu;
       swtpm.enable = true;
       ovmf = {
         enable = true;
@@ -190,7 +191,6 @@
   };
   hardware.graphics = {
     enable = true;
-    extraPackages = [pkgs.intel-media-driver];
   };
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
@@ -202,8 +202,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
   hardware.nvidia.prime = {
-    offload.enable = true;
-    offload.enableOffloadCmd = true;
+    sync.enable = true;
     intelBusId = "PCI:0:2:0";
     nvidiaBusId = "PCI:1:0:0";
   };
@@ -262,7 +261,11 @@
     #     options snd-hda-intel model=asus-zenbook
     #   '';
     modprobeConfig.useUbuntuModuleBlacklist = false;
-    kernelParams = ["intel_iommu=on" "iommu=pt" "vfio-pci.ids=10de:2191"];
+    kernelParams = [
+      "intel_iommu=on"
+      "iommu=pt"
+      "vfio-pci.ids=10de:2191"
+    ];
     supportedFilesystems = ["ntfs"];
   };
 

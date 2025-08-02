@@ -33,7 +33,7 @@
 
   home.packages = with pkgs; [
     blender
-    davinci-resolve
+    #davinci-resolve
     discord
     gimp
     file-roller
@@ -155,30 +155,5 @@
     };
   };
 
-  xdg.desktopEntries = {
-    osu = {
-      name = "osu!";
-      genericName = "osu! na dGPU";
-      icon = "osu";
-      exec = "nvidia-offload osu! %u";
-      mimeType = ["application/x-osu-beatmap-archive" "application/x-osu-skin-archive" "application/x-osu-beatmap" "application/x-osu-storyboard" "application/x-osu-replay" "x-scheme-handler/osu"];
-      categories = ["Game"];
-    };
-    blender = {
-      name = "Blender";
-      genericName = "Blender na dGPU";
-      icon = "blender";
-      exec = "nvidia-offload blender %f";
-      mimeType = ["application/x-blender"];
-      categories = ["Graphics" "3DGraphics"];
-    };
-    tetrio= {
-      name = "TETR.IO";
-      genericName = "TETR.IO na dGPU";
-      icon = "TETR.IO";
-      exec = "nvidia-offload tetrio %U";
-      mimeType = ["x-scheme-handler/tetrio"];
-    };
-  };
   nixpkgs.config.allowUnfree = true;
 }
