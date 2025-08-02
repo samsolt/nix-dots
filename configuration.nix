@@ -191,9 +191,11 @@
   };
   hardware.graphics = {
     enable = true;
+    extraPackages = [pkgs.intel-media-driver];
   };
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
+    videoAcceleration = true;
     modesetting.enable = true;
     powerManagement.enable = false; # ditto
     powerManagement.finegrained = false; # vypnuty protoze "Unable to change device power state from D3cold to D0" a pak se to cely zesere; idk jestli to vypnuti fixne
